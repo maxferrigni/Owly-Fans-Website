@@ -16,9 +16,9 @@
         .main-video {
             width: 100%;
             max-width: 1200px; /* Maximum width for large screens */
-            margin: 20px auto;
+            margin: 10px auto; /* Reduce space above and below */
             position: relative; /* Required for responsive iframe */
-            padding-top: 56.25%; /* 16:9 Aspect Ratio (height / width * 100) */
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
         }
         .main-video iframe {
             position: absolute;
@@ -34,12 +34,17 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
-            margin-top: 20px;
+            margin: 20px auto; /* Add space below the sub videos */
         }
         .sub-videos iframe {
             width: 45%; /* Adjust width for smaller videos */
             max-width: 560px;
-            aspect-ratio: 16 / 9; /* Ensure proper video aspect ratio */
+            aspect-ratio: 16 / 9; /* Maintain aspect ratio */
+        }
+
+        /* Space Below All Videos */
+        .footer-space {
+            margin: 30px 0; /* Adds space below all content */
         }
     </style>
 </head>
@@ -74,5 +79,8 @@
             allowfullscreen>
         </iframe>
     </div>
+
+    <!-- Footer Space -->
+    <div class="footer-space"></div>
 </body>
 </html>
