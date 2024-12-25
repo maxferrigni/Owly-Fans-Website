@@ -4,13 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Owly Fans</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .main-video {
+            width: 100%;
+            max-width: 1200px; /* Adjust size here */
+            margin: 20px auto;
+        }
+        .sub-videos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .sub-videos iframe {
+            width: 45%;
+            max-width: 560px;
+        }
+    </style>
 </head>
-<body style="text-align: center; font-family: Arial, sans-serif;">
+<body>
     <h1 style="font-size: 3em; font-weight: bold;">Welcome to OWLY FANS!</h1>
 
-    <!-- Video 1 -->
-    <div style="margin: 20px;">
-        <iframe width="560" height="315" 
+    <!-- Main Large Video -->
+    <div class="main-video">
+        <iframe 
             src="https://www.youtube.com/embed/w3CP_byyzB8?autoplay=1&mute=1" 
             title="YouTube video player" 
             frameborder="0" 
@@ -19,20 +42,16 @@
         </iframe>
     </div>
 
-    <!-- Video 2 -->
-    <div style="margin: 20px;">
-        <iframe width="560" height="315" 
+    <!-- Smaller Videos Below -->
+    <div class="sub-videos">
+        <iframe 
             src="https://www.youtube.com/embed/VvQs99tqQoc?autoplay=1&mute=1" 
             title="YouTube video player" 
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
             allowfullscreen>
         </iframe>
-    </div>
-
-    <!-- Video 3 -->
-    <div style="margin: 20px;">
-        <iframe width="560" height="315" 
+        <iframe 
             src="https://www.youtube.com/embed/3L11gaG1W_k?autoplay=1&mute=1" 
             title="YouTube video player" 
             frameborder="0" 
