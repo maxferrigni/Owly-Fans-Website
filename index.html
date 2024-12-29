@@ -43,6 +43,13 @@
             aspect-ratio: 16 / 9; /* Maintain aspect ratio */
         }
 
+        /* Sub Video Titles */
+        .sub-video-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
         /* Space Below All Videos */
         .footer-space {
             margin: 30px 0; /* Adds space below all content */
@@ -60,6 +67,11 @@
         }
         .taxonomy strong {
             display: inline; /* Keep rank and value closer together */
+        }
+        .taxonomy-title {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -82,27 +94,34 @@
     <!-- Smaller Videos Below -->
     <div class="sub-videos">
         <!-- Bottom Left Camera -->
-        <iframe 
-            src="https://www.youtube.com/embed/VvQs99tqQoc?autoplay=1&mute=1" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-                   gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-        </iframe>
+        <div>
+            <div class="sub-video-title">Inside Camera</div>
+            <iframe 
+                src="https://www.youtube.com/embed/VvQs99tqQoc?autoplay=1&mute=1" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                       gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
         <!-- Bottom Right Camera (Profile View) -->
-        <iframe 
-            src="https://www.youtube.com/embed/r3iemi-1QSM?autoplay=1&mute=1" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-                   gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-        </iframe>
+        <div>
+            <div class="sub-video-title">Profile Camera</div>
+            <iframe 
+                src="https://www.youtube.com/embed/r3iemi-1QSM?autoplay=1&mute=1" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                       gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
     </div>
 
     <!-- Taxonomic Ranks for Barn Owls -->
     <div class="taxonomy">
+        <div class="taxonomy-title">Barn Owls</div>
         <p><strong>Domain:</strong> Eukarya</p>
         <p><strong>Kingdom:</strong> Animalia</p>
         <p><strong>Phylum:</strong> Chordata</p>
