@@ -16,8 +16,8 @@
         /* Main Video Styles */
         .main-video {
             width: 100%;
-            max-width: 1200px; /* Maximum width for large screens */
-            margin: 10px auto; /* Center the video */
+            max-width: 1200px;
+            margin: 10px auto;
             position: relative;
             padding-top: 56.25%; /* Maintain 16:9 aspect ratio */
         }
@@ -35,15 +35,15 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
-            margin: 20px auto; /* Add space below the sub videos */
+            margin: 20px auto;
         }
-        .sub-videos div {
-            width: 45%; /* Maintain the original size for smaller videos */
-            max-width: 560px;
+        .sub-video {
             position: relative;
+            width: 45%; /* Ensure consistent size for smaller videos */
+            max-width: 560px;
             padding-top: 56.25%; /* Maintain 16:9 aspect ratio */
         }
-        .sub-videos iframe {
+        .sub-video iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -70,16 +70,31 @@
             margin-top: 20px;
         }
         .taxonomy p {
-            margin: 5px 0; /* Reduce vertical space between elements */
-            line-height: 1.2; /* Reduce line spacing */
+            margin: 5px 0;
+            line-height: 1.2;
         }
         .taxonomy strong {
-            display: inline; /* Keep rank and value closer together */
+            display: inline;
         }
         .taxonomy-title {
             font-size: 2em;
             font-weight: bold;
             margin-bottom: 10px;
+        }
+
+        /* Email Section Styles */
+        .email-section {
+            margin-top: 30px;
+            font-size: 1.5em;
+            color: #444;
+        }
+        .email-section a {
+            color: #0073e6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .email-section a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -102,7 +117,7 @@
     <!-- Smaller Videos Below -->
     <div class="sub-videos">
         <!-- Bottom Left Camera -->
-        <div>
+        <div class="sub-video">
             <div class="sub-video-title">Inside Camera</div>
             <iframe 
                 src="https://www.youtube.com/embed/VvQs99tqQoc?autoplay=1&mute=1" 
@@ -113,8 +128,8 @@
                 allowfullscreen>
             </iframe>
         </div>
-        <!-- Bottom Right Camera (Profile View) -->
-        <div>
+        <!-- Bottom Right Camera -->
+        <div class="sub-video">
             <div class="sub-video-title">Profile Camera</div>
             <iframe 
                 src="https://www.youtube.com/embed/r3iemi-1QSM?autoplay=1&mute=1" 
@@ -138,6 +153,11 @@
         <p><strong>Family:</strong> Tytonidae</p>
         <p><strong>Genus:</strong> Tyto</p>
         <p><strong>Species:</strong> Tyto alba</p>
+    </div>
+
+    <!-- Contact Email Section -->
+    <div class="email-section">
+        <p>Email me! <a href="mailto:owlyfans01@gmail.com">owlyfans01@gmail.com</a></p>
     </div>
 </body>
 </html>
