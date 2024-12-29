@@ -17,16 +17,15 @@
         .main-video {
             width: 100%;
             max-width: 1200px; /* Maximum width for large screens */
-            margin: 10px auto; /* Reduce space above and below */
-            position: relative; /* Required for responsive iframe */
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            margin: 10px auto; /* Center the video */
+            position: relative;
+            height: auto;
+            max-height: 600px; /* Limit the height to prevent excessive black space */
         }
         .main-video iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
+            object-fit: cover; /* Adjusts content to fill space without distortion */
         }
 
         /* Sub Videos Styles */
@@ -38,7 +37,7 @@
             margin: 20px auto; /* Add space below the sub videos */
         }
         .sub-videos iframe {
-            width: 45%; /* Adjust width for smaller videos */
+            width: 45%; /* Maintain the original size for smaller videos */
             max-width: 560px;
             aspect-ratio: 16 / 9; /* Maintain aspect ratio */
         }
