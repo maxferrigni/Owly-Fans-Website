@@ -37,25 +37,10 @@
             flex-wrap: wrap;
             margin: 20px auto;
         }
-        .sub-video {
-            position: relative;
-            width: 45%; /* Ensure consistent size for smaller videos */
+        .sub-videos iframe {
+            width: 45%; /* Original size for smaller videos */
             max-width: 560px;
-            padding-top: 56.25%; /* Maintain 16:9 aspect ratio */
-        }
-        .sub-video iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Sub Video Titles */
-        .sub-video-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-bottom: 5px;
+            aspect-ratio: 16 / 9; /* Maintain aspect ratio */
         }
 
         /* Space Below All Videos */
@@ -96,6 +81,16 @@
         .email-section a:hover {
             text-decoration: underline;
         }
+
+        /* Beta Testing Message */
+        .beta-message {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #666;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
 </head>
 <body>
@@ -103,7 +98,6 @@
 
     <!-- Main Large Video -->
     <div class="main-video">
-        <!-- Central Main Camera -->
         <iframe 
             src="https://www.youtube.com/embed/w3CP_byyzB8?autoplay=1&mute=1" 
             title="YouTube video player" 
@@ -116,30 +110,22 @@
 
     <!-- Smaller Videos Below -->
     <div class="sub-videos">
-        <!-- Bottom Left Camera -->
-        <div class="sub-video">
-            <div class="sub-video-title">Inside Camera</div>
-            <iframe 
-                src="https://www.youtube.com/embed/VvQs99tqQoc?autoplay=1&mute=1" 
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-                       gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
-        <!-- Bottom Right Camera -->
-        <div class="sub-video">
-            <div class="sub-video-title">Profile Camera</div>
-            <iframe 
-                src="https://www.youtube.com/embed/r3iemi-1QSM?autoplay=1&mute=1" 
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-                       gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
+        <iframe 
+            src="https://www.youtube.com/embed/VvQs99tqQoc?autoplay=1&mute=1" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                   gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+        </iframe>
+        <iframe 
+            src="https://www.youtube.com/embed/r3iemi-1QSM?autoplay=1&mute=1" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                   gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+        </iframe>
     </div>
 
     <!-- Taxonomic Ranks for Barn Owls -->
@@ -158,6 +144,11 @@
     <!-- Contact Email Section -->
     <div class="email-section">
         <p>Email me! <a href="mailto:owlyfans01@gmail.com">owlyfans01@gmail.com</a></p>
+    </div>
+
+    <!-- Beta Testing Message -->
+    <div class="beta-message">
+        <p>I’m always making changes to this site and my owl setup. If you’re interested in helping me beta test, I’d love to hear from you! Let’s make this the best owl experience possible!</p>
     </div>
 </body>
 </html>
