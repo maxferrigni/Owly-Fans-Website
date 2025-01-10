@@ -13,11 +13,27 @@
             padding: 0;
         }
 
+        /* Layout Styles */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .main-content {
+            width: 70%;
+            max-width: 800px;
+            margin: 10px;
+        }
+        .sidebar {
+            width: 25%;
+            max-width: 300px;
+            margin: 10px;
+            text-align: left;
+        }
+
         /* Main Video Styles */
         .main-video {
             width: 100%;
-            max-width: 1200px;
-            margin: 10px auto;
             position: relative;
             padding-top: 56.25%; /* Maintain 16:9 aspect ratio */
         }
@@ -29,23 +45,24 @@
             height: 100%;
         }
 
-        /* Sub Videos Styles */
-        .sub-videos {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin: 20px auto;
+        /* Sidebar Highlight Videos */
+        .highlights {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
         }
-        .sub-videos iframe {
-            width: 45%; /* Original size for smaller videos */
-            max-width: 560px;
-            aspect-ratio: 16 / 9; /* Maintain aspect ratio */
+        .highlights h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            text-align: center;
         }
-
-        /* Space Below All Videos */
-        .footer-space {
-            margin: 30px 0; /* Adds space below all content */
+        .highlight-video {
+            margin-bottom: 15px;
+        }
+        .highlight-video iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
         }
 
         /* Taxonomy Styles */
@@ -96,51 +113,52 @@
 <body>
     <h1 style="font-size: 3em; font-weight: bold;">Welcome to OWLY FANS!</h1>
 
-    <!-- Main Large Video -->
-    <div class="main-video">
-        <iframe 
-            src="https://www.youtube.com/embed/9guIk3qKRAE?autoplay=1&mute=1" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-                   gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-        </iframe>
-    </div>
+    <div class="container">
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Main Large Video -->
+            <div class="main-video">
+                <iframe 
+                    src="https://www.youtube.com/embed/9guIk3qKRAE?autoplay=1&mute=1" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                        gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
 
-    <!-- Smaller Videos Below (Commented Out) -->
-    <!--
-    <div class="sub-videos">
-        <iframe 
-            src="https://www.youtube.com/embed/VvQs99tqQoc?autoplay=1&mute=1" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-                   gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-        </iframe>
-        <iframe 
-            src="https://www.youtube.com/embed/CoTx7m5gp5g?autoplay=1&mute=1" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-                   gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-        </iframe>
-    </div>
-    -->
+            <!-- Taxonomic Ranks for Barn Owls -->
+            <div class="taxonomy">
+                <div class="taxonomy-title">Barn Owls</div>
+                <p><strong>Domain:</strong> Eukarya</p>
+                <p><strong>Kingdom:</strong> Animalia</p>
+                <p><strong>Phylum:</strong> Chordata</p>
+                <p><strong>Class:</strong> Aves</p>
+                <p><strong>Order:</strong> Strigiformes</p>
+                <p><strong>Family:</strong> Tytonidae</p>
+                <p><strong>Genus:</strong> Tyto</p>
+                <p><strong>Species:</strong> Tyto alba</p>
+            </div>
+        </div>
 
-    <!-- Taxonomic Ranks for Barn Owls -->
-    <div class="taxonomy">
-        <div class="taxonomy-title">Barn Owls</div>
-        <p><strong>Domain:</strong> Eukarya</p>
-        <p><strong>Kingdom:</strong> Animalia</p>
-        <p><strong>Phylum:</strong> Chordata</p>
-        <p><strong>Class:</strong> Aves</p>
-        <p><strong>Order:</strong> Strigiformes</p>
-        <p><strong>Family:</strong> Tytonidae</p>
-        <p><strong>Genus:</strong> Tyto</p>
-        <p><strong>Species:</strong> Tyto alba</p>
+        <!-- Sidebar for Top Highlights -->
+        <div class="sidebar">
+            <div class="highlights">
+                <h2>Top Highlights</h2>
+                <div class="highlight-video">
+                    <iframe 
+                        src="https://www.youtube.com/embed/aLazkYtb2o8" 
+                        title="Highlight Video 1" 
+                        frameborder="0" 
+                        allow="accelerometer; clipboard-write; encrypted-media; 
+                            gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <!-- Add more highlight videos here -->
+            </div>
+        </div>
     </div>
 
     <!-- Contact Email Section -->
