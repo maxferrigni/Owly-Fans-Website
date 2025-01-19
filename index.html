@@ -3,21 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Form</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/styles/test_main.css">
+    <title>Owly Fans</title>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Layout Styles */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .main-content {
+            width: 70%;
+            max-width: 800px;
+            margin: 10px;
+        }
+        .sidebar {
+            width: 25%;
+            max-width: 300px;
+            margin: 10px;
+            text-align: left;
+        }
+
+        /* Main Video Styles */
+        .main-video {
+            width: 100%;
+            position: relative;
+            padding-top: 56.25%; /* Maintain 16:9 aspect ratio */
+        }
+        .main-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Sidebar Highlight Videos */
+        .highlights {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .highlights h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .highlight-video {
+            margin-bottom: 15px;
+        }
+        .highlight-video iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+        }
+
+        /* Taxonomy Styles */
+        .taxonomy {
+            text-align: center;
+            font-size: 1.6875em; /* 25% smaller than before */
+            margin-top: 20px;
+        }
+        .taxonomy p {
+            margin: 5px 0;
+            line-height: 1.2;
+        }
+        .taxonomy strong {
+            display: inline;
+        }
+        .taxonomy-title {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Email Section Styles */
+        .email-section {
+            margin-top: 30px;
+            font-size: 1.5em;
+            color: #444;
+        }
+        .email-section a {
+            color: #0073e6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .email-section a:hover {
+            text-decoration: underline;
+        }
+
+        /* Beta Testing Message */
+        .beta-message {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #666;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Subscription Form Styling */
+        .form-container {
+            margin: 20px auto;
+            max-width: 400px;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        .form-container input, .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        .form-container button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        .message.success {
+            color: green;
+        }
+        .message.error {
+            color: red;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-    <div id="subscription-form" class="container"></div>
+    <h1 style="font-size: 3em; font-weight: bold;">Welcome to OWLY FANS!</h1>
 
-    <script type="text/babel">
-        import SubscriptionForm from '/components/test_subscription_form.js';
+    <div class="container">
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Main Large Video -->
+            <div class="main-video">
+                <iframe 
+                    src="https://www.youtube.com/embed/9guIk3qKRAE?autoplay=1&mute=1" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                        gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
 
-        const root = ReactDOM.createRoot(document.getElementById('subscription-form'));
-        root.render(<SubscriptionForm />);
-    </script>
+            <!-- Taxonomic Ranks for Barn Owls -->
+            <div class="taxonomy">
+                <div class="taxonomy-title">Barn Owls</div>
+                <p><strong>Domain:</strong> Eukarya</p>
+                <p><strong>Kingdom:</strong> Animalia</p>
+                <p><strong>Phylum:</strong> Chordata</p>
+                <p><strong>Class:</strong> Aves</p>
+                <p><strong>Order:</strong> Strigiformes</p>
+                <p><strong>Family:</strong> Tytonidae</p>
+                <p><strong>Genus:</strong> Tyto</p>
+                <p><strong>Species:</strong> Tyto alba</p>
+            </div>
+        </div>
+
+        <!-- Sidebar for Top Highlights -->
+        <div class="sidebar">
+            <div class="highlights">
+                <h2>Top Highlights</h2>
+                <div class="highlight-video">
+                    <iframe 
+                        src="https://www.youtube.com/embed/aLazkYtb2o8" 
+                        title="Highlight Video 1" 
+                        frameborder="0" 
+                        allow="accelerometer; clipboard-write; encrypted-media; 
+                            gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <!-- Add more highlight videos here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Email Section -->
+    <div class="email-section">
+        <p>Email me! <a href="mailto:owlyfans01@gmail.com">owlyfans01@gmail.com</a></p>
+    </div>
+
+    <!-- Beta Testing Message -->
+    <div class="beta-message">
+        <p>I’m always making changes to this site and my owl setup. If you’re interested in helping me beta test, I’d love to hear from you! Let’s make this the best owl experience possible!</p>
+    </div>
+
+    <!-- Subscription Form -->
+    <div id="subscription-form" class="form-container">
+        <h1>Subscribe</h1>
+        <input type="text" id="name" placeholder="Enter your name" required>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button onclick="subscribe()">Subscribe</button>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="/components/SubscriptionForm.js"></script>
 </body>
 </html>
