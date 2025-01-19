@@ -1,4 +1,6 @@
+// Updated SubscriptionForm.js
 import { SUPABASE_URL, SUPABASE_KEY } from '../config/supabase.js';
+import React, { useState } from 'react';
 
 const SubscriptionForm = () => {
     const [email, setEmail] = useState('');
@@ -12,11 +14,11 @@ const SubscriptionForm = () => {
     });
 
     // Initialize Supabase client
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         // Validate email format
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
@@ -34,11 +36,15 @@ const SubscriptionForm = () => {
             setIsSubmitting(true);
 
             // Check if email already exists
-            const { data: existingUser } = await supabase
+            const { data: existingUser, error: fetchError } = await supabase
                 .from('subscribers')
                 .select('email')
                 .eq('email', email.toLowerCase().trim())
                 .single();
+
+            if (fetchError && fetchError.code !== 'PGRST116') {
+                throw fetchError;
+            }
 
             if (existingUser) {
                 setStatus('already-subscribed');
@@ -49,10 +55,10 @@ const SubscriptionForm = () => {
             const { error } = await supabase
                 .from('subscribers')
                 .insert([
-                    { 
+                    {
                         email: email.toLowerCase().trim(),
-                        preferences: { email: true, sms: false }
-                    }
+                        preferences: { email: true, sms: false },
+                    },
                 ]);
 
             if (error) throw error;
@@ -66,7 +72,6 @@ const SubscriptionForm = () => {
             const num1 = Math.floor(Math.random() * 10) + 1;
             const num2 = Math.floor(Math.random() * 10) + 1;
             setCaptchaQuestion({ num1, num2, answer: num1 + num2 });
-
         } catch (error) {
             console.error('Subscription error:', error);
             setStatus('error');
@@ -78,7 +83,7 @@ const SubscriptionForm = () => {
     return (
         <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-sm">
             <h2 className="text-xl font-bold mb-4 text-center">Subscribe to Owl Updates</h2>
-            
+
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
