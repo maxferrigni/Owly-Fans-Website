@@ -132,4 +132,24 @@ const SubscriptionForm = () => {
             )}
 
             {status === 'invalid-email' && (
-                <div className="mt-4 p-4 bg-red-50 border
+                <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-md">
+                    <p className="text-red-700">Please enter a valid email address.</p>
+                </div>
+            )}
+
+            {status === 'captcha-error' && (
+                <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-md">
+                    <p className="text-red-700">Incorrect answer. Please try again.</p>
+                </div>
+            )}
+
+            {status === 'error' && (
+                <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-md">
+                    <p className="text-red-700">An error occurred. Please try again later.</p>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default SubscriptionForm;
