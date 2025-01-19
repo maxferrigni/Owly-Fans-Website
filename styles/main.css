@@ -1,175 +1,60 @@
-/* Updated main.css */
+/* Main.css for Styling */
 body {
-    text-align: center;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
-
-/* Layout Styles */
-.container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f9;
 }
 
-.main-content {
-    width: 70%;
-    max-width: 800px;
-    margin: 10px;
-}
-
-.sidebar {
-    width: 25%;
-    max-width: 300px;
-    margin: 10px;
-    text-align: left;
-}
-
-/* Main Video Styles */
-.main-video {
+.form-container {
     width: 100%;
-    position: relative;
-    padding-top: 56.25%; /* 16:9 aspect ratio */
-}
-
-.main-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-/* Sidebar Highlight Videos */
-.highlights {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 8px;
-}
-
-.highlights h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.highlight-video {
-    margin-bottom: 15px;
-}
-
-.highlight-video iframe {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-}
-
-/* Taxonomy Styles */
-.taxonomy {
-    text-align: center;
-    font-size: 1.6875em;
-    margin-top: 20px;
-}
-
-.taxonomy p {
-    margin: 5px 0;
-    line-height: 1.2;
-}
-
-.taxonomy strong {
-    display: inline;
-}
-
-.taxonomy-title {
-    font-size: 2em;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-/* Email Section Styles */
-.email-section {
-    margin-top: 30px;
-    font-size: 1.5em;
-    color: #444;
-}
-
-.email-section a {
-    color: #0073e6;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.email-section a:hover {
-    text-decoration: underline;
-}
-
-/* Beta Testing Message */
-.beta-message {
-    margin-top: 10px;
-    font-size: 1.2em;
-    color: #666;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Updated Subscription Form Container */
-.subscription-container {
-    margin: 20px auto;
-    max-width: 500px;
+    max-width: 400px;
     padding: 20px;
-    background-color: #ffffff; /* Ensure visibility */
-    border: 1px solid #ddd; /* Add border for visibility */
+    background: #fff;
+    border: 1px solid #ccc;
     border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.subscription-container form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.form-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
 }
 
-.subscription-container input {
+.form-container input, .form-container button {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-size: 1rem;
 }
 
-.subscription-container button {
-    padding: 10px;
-    font-size: 16px;
-    color: #ffffff;
+.form-container button {
     background-color: #007bff;
+    color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-.subscription-container button:hover {
+.form-container button:hover {
     background-color: #0056b3;
 }
 
-.subscription-container .status-message {
+.message {
+    text-align: center;
     margin-top: 10px;
-    padding: 10px;
-    border-radius: 4px;
-    font-size: 14px;
-    text-align: left;
+    font-size: 0.9rem;
 }
 
-.subscription-container .status-message.success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+.message.success {
+    color: green;
 }
 
-.subscription-container .status-message.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+.message.error {
+    color: red;
 }
