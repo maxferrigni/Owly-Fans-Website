@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Owly Fans</title>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <!-- Add React and required dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+    <!-- Add Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             text-align: center;
@@ -68,7 +74,7 @@
         /* Taxonomy Styles */
         .taxonomy {
             text-align: center;
-            font-size: 1.6875em; /* 25% smaller than before */
+            font-size: 1.6875em;
             margin-top: 20px;
         }
         .taxonomy p {
@@ -108,6 +114,13 @@
             margin-left: auto;
             margin-right: auto;
         }
+
+        /* Subscription Form Container */
+        .subscription-container {
+            margin: 20px auto;
+            max-width: 500px;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
@@ -118,15 +131,14 @@
         <div class="main-content">
             <!-- Main Large Video -->
             <div class="main-video">
-    <iframe 
-        src="https://www.youtube.com/embed/2jYnVfRMdTU?autoplay=1&mute=1" 
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-               gyroscope; picture-in-picture; web-share" 
-        allowfullscreen>
-    </iframe>
-</div>
+                <iframe 
+                    src="https://www.youtube.com/embed/2jYnVfRMdTU?autoplay=1&mute=1" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
 
             <!-- Taxonomic Ranks for Barn Owls -->
             <div class="taxonomy">
@@ -151,15 +163,16 @@
                         src="https://www.youtube.com/embed/aLazkYtb2o8" 
                         title="Highlight Video 1" 
                         frameborder="0" 
-                        allow="accelerometer; clipboard-write; encrypted-media; 
-                            gyroscope; picture-in-picture; web-share" 
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         allowfullscreen>
                     </iframe>
                 </div>
-                <!-- Add more highlight videos here -->
             </div>
         </div>
     </div>
+
+    <!-- Subscription Form -->
+    <div id="subscription-form" class="subscription-container"></div>
 
     <!-- Contact Email Section -->
     <div class="email-section">
@@ -168,7 +181,159 @@
 
     <!-- Beta Testing Message -->
     <div class="beta-message">
-        <p>I’m always making changes to this site and my owl setup. If you’re interested in helping me beta test, I’d love to hear from you! Let’s make this the best owl experience possible!</p>
+        <p>I'm always making changes to this site and my owl setup. If you're interested in helping me beta test, I'd love to hear from you! Let's make this the best owl experience possible!</p>
     </div>
+
+    <!-- React Component Script -->
+    <script type="text/babel">
+        // Subscription Form Component
+        const SubscriptionForm = () => {
+            const [email, setEmail] = useState('');
+            const [captchaAnswer, setCaptchaAnswer] = useState('');
+            const [status, setStatus] = useState('');
+            const [isSubmitting, setIsSubmitting] = useState(false);
+            const [captchaQuestion, setCaptchaQuestion] = useState(() => {
+                const num1 = Math.floor(Math.random() * 10) + 1;
+                const num2 = Math.floor(Math.random() * 10) + 1;
+                return { num1, num2, answer: num1 + num2 };
+            });
+
+            const handleSubmit = async (e) => {
+                e.preventDefault();
+                
+                // Validate email format
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    setStatus('invalid-email');
+                    return;
+                }
+
+                // Validate captcha
+                if (parseInt(captchaAnswer) !== captchaQuestion.answer) {
+                    setStatus('captcha-error');
+                    return;
+                }
+
+                try {
+                    setIsSubmitting(true);
+                    const response = await fetch('/api/subscribe', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            email: email.toLowerCase().trim(),
+                            captchaAnswer: parseInt(captchaAnswer),
+                            captchaQuestion: captchaQuestion
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(data.message || 'Subscription failed');
+                    }
+
+                    if (data.status === 'already-subscribed') {
+                        setStatus('already-subscribed');
+                    } else {
+                        setStatus('success');
+                        // Reset form
+                        setEmail('');
+                        setCaptchaAnswer('');
+                        // Generate new captcha
+                        const num1 = Math.floor(Math.random() * 10) + 1;
+                        const num2 = Math.floor(Math.random() * 10) + 1;
+                        setCaptchaQuestion({ num1, num2, answer: num1 + num2 });
+                    }
+                } catch (error) {
+                    setStatus('error');
+                    console.error('Subscription error:', error);
+                } finally {
+                    setIsSubmitting(false);
+                }
+            };
+
+            return (
+                <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-sm">
+                    <h2 className="text-xl font-bold mb-4 text-center">Subscribe to Owl Updates</h2>
+                    
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <div>
+                            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                                Email Address
+                            </label>
+                            <input
+                                type="email"
+                                id="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                disabled={isSubmitting}
+                                required
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="captcha" className="block text-sm font-medium text-gray-700 mb-1">
+                                What is {captchaQuestion.num1} + {captchaQuestion.num2}?
+                            </label>
+                            <input
+                                type="number"
+                                id="captcha"
+                                value={captchaAnswer}
+                                onChange={(e) => setCaptchaAnswer(e.target.value)}
+                                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                disabled={isSubmitting}
+                                required
+                            />
+                        </div>
+
+                        <button
+                            type="submit"
+                            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+                            disabled={isSubmitting}
+                        >
+                            {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+                        </button>
+                    </form>
+
+                    {status === 'success' && (
+                        <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-md">
+                            <p className="text-green-700">Successfully subscribed! Check your email for updates.</p>
+                        </div>
+                    )}
+
+                    {status === 'already-subscribed' && (
+                        <div className="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-md">
+                            <p className="text-yellow-700">This email is already subscribed to updates!</p>
+                        </div>
+                    )}
+
+                    {status === 'invalid-email' && (
+                        <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-md">
+                            <p className="text-red-700">Please enter a valid email address.</p>
+                        </div>
+                    )}
+
+                    {status === 'captcha-error' && (
+                        <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-md">
+                            <p className="text-red-700">Incorrect answer. Please try again.</p>
+                        </div>
+                    )}
+
+                    {status === 'error' && (
+                        <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-md">
+                            <p className="text-red-700">An error occurred. Please try again later.</p>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        // Render the SubscriptionForm component
+        const root = ReactDOM.createRoot(document.getElementById('subscription-form'));
+        root.render(<SubscriptionForm />);
+    </script>
 </body>
 </html>
