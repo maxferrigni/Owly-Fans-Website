@@ -1,0 +1,120 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Layout Styles */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-content {
+    width: 70%;
+    max-width: 800px;
+    margin: 10px;
+}
+
+.sidebar {
+    width: 25%;
+    max-width: 300px;
+    margin: 10px;
+    text-align: left;
+}
+
+/* Main Video Styles */
+.main-video {
+    width: 100%;
+    position: relative;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+.main-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Sidebar Highlight Videos */
+.highlights {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.highlights h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.highlight-video {
+    margin-bottom: 15px;
+}
+
+.highlight-video iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
+
+/* Taxonomy Styles */
+.taxonomy {
+    text-align: center;
+    font-size: 1.6875em;
+    margin-top: 20px;
+}
+
+.taxonomy p {
+    margin: 5px 0;
+    line-height: 1.2;
+}
+
+.taxonomy strong {
+    display: inline;
+}
+
+.taxonomy-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Email Section Styles */
+.email-section {
+    margin-top: 30px;
+    font-size: 1.5em;
+    color: #444;
+}
+
+.email-section a {
+    color: #0073e6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.email-section a:hover {
+    text-decoration: underline;
+}
+
+/* Beta Testing Message */
+.beta-message {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #666;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Subscription Form Container */
+.subscription-container {
+    margin: 20px auto;
+    max-width: 500px;
+    padding: 20px;
+}
