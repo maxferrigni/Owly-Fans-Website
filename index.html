@@ -11,31 +11,21 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-        }
-
-        /* Layout Styles */
-        .container {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             justify-content: center;
-        }
-        .main-content {
-            width: 70%;
-            max-width: 800px;
-            margin: 10px;
-        }
-        .sidebar {
-            width: 25%;
-            max-width: 300px;
-            margin: 10px;
-            text-align: left;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f9;
         }
 
         /* Main Video Styles */
         .main-video {
             width: 100%;
+            max-width: 800px;
             position: relative;
             padding-top: 56.25%; /* Maintain 16:9 aspect ratio */
+            margin-bottom: 20px;
         }
         .main-video iframe {
             position: absolute;
@@ -45,76 +35,13 @@
             height: 100%;
         }
 
-        /* Sidebar Highlight Videos */
-        .highlights {
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 8px;
-        }
-        .highlights h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .highlight-video {
-            margin-bottom: 15px;
-        }
-        .highlight-video iframe {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-        }
-
-        /* Taxonomy Styles */
-        .taxonomy {
-            text-align: center;
-            font-size: 1.6875em;
-            margin-top: 20px;
-        }
-        .taxonomy p {
-            margin: 5px 0;
-            line-height: 1.2;
-        }
-        .taxonomy strong {
-            display: inline;
-        }
-        .taxonomy-title {
-            font-size: 2em;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        /* Email Section Styles */
-        .email-section {
-            margin-top: 30px;
-            font-size: 1.5em;
-            color: #444;
-        }
-        .email-section a {
-            color: #0073e6;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .email-section a:hover {
-            text-decoration: underline;
-        }
-
-        /* Beta Testing Message */
-        .beta-message {
-            margin-top: 10px;
-            font-size: 1.2em;
-            color: #666;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
         /* Subscription Form Styling */
         .form-container {
             margin: 20px auto;
             max-width: 400px;
+            width: 90%;
             padding: 20px;
-            background: #fff;
+            background: #ffffff;
             border: 1px solid #ccc;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -129,12 +56,15 @@
             padding: 10px;
             margin-bottom: 10px;
             font-size: 1rem;
+            border-radius: 4px;
+        }
+        .form-container input {
+            border: 1px solid #ccc;
         }
         .form-container button {
             background-color: #007bff;
-            color: #fff;
+            color: white;
             border: none;
-            border-radius: 4px;
             cursor: pointer;
         }
         .form-container button:hover {
@@ -157,62 +87,16 @@
 <body>
     <h1 style="font-size: 3em; font-weight: bold;">Welcome to OWLY FANS!</h1>
 
-    <div class="container">
-        <!-- Main Content -->
-        <div class="main-content">
-            <!-- Main Large Video -->
-            <div class="main-video">
-                <iframe 
-                    src="https://www.youtube.com/embed/2jYnVfRMdTU?autoplay=1&mute=1" 
-                    title="YouTube video player" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-                        gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-
-            <!-- Taxonomic Ranks for Barn Owls -->
-            <div class="taxonomy">
-                <div class="taxonomy-title">Barn Owls</div>
-                <p><strong>Domain:</strong> Eukarya</p>
-                <p><strong>Kingdom:</strong> Animalia</p>
-                <p><strong>Phylum:</strong> Chordata</p>
-                <p><strong>Class:</strong> Aves</p>
-                <p><strong>Order:</strong> Strigiformes</p>
-                <p><strong>Family:</strong> Tytonidae</p>
-                <p><strong>Genus:</strong> Tyto</p>
-                <p><strong>Species:</strong> Tyto alba</p>
-            </div>
-        </div>
-
-        <!-- Sidebar for Top Highlights -->
-        <div class="sidebar">
-            <div class="highlights">
-                <h2>Top Highlights</h2>
-                <div class="highlight-video">
-                    <iframe 
-                        src="https://www.youtube.com/embed/aLazkYtb2o8" 
-                        title="Highlight Video 1" 
-                        frameborder="0" 
-                        allow="accelerometer; clipboard-write; encrypted-media; 
-                            gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <!-- Add more highlight videos here -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Contact Email Section -->
-    <div class="email-section">
-        <p>Email me! <a href="mailto:owlyfans01@gmail.com">owlyfans01@gmail.com</a></p>
-    </div>
-
-    <!-- Beta Testing Message -->
-    <div class="beta-message">
-        <p>I’m always making changes to this site and my owl setup. If you’re interested in helping me beta test, I’d love to hear from you! Let’s make this the best owl experience possible!</p>
+    <!-- Main Video -->
+    <div class="main-video">
+        <iframe 
+            src="https://www.youtube.com/embed/2jYnVfRMdTU?autoplay=1&mute=1" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+        </iframe>
     </div>
 
     <!-- Subscription Form -->
@@ -224,6 +108,55 @@
         <div id="message" class="message"></div>
     </div>
 
-    <script src="/components/SubscriptionForm.js"></script>
+    <script>
+        // Supabase setup
+        const SUPABASE_URL = 'https://kketfaaihwjflpdngtvo.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtrZXRmYWFpaHdqZmxwZG5ndHZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzczMTg1MTAsImV4cCI6MjA1Mjg5NDUxMH0.PYKJKO39GCAXm-3zDFnQbSy1-oc4iuE4neLnfItIC90';
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function subscribe() {
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageDiv = document.getElementById('message');
+
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+
+            // Clear message div
+            messageDiv.textContent = '';
+            messageDiv.className = 'message';
+
+            if (!name || !email) {
+                messageDiv.textContent = 'Please fill out all fields.';
+                messageDiv.className = 'message error';
+                return;
+            }
+
+            try {
+                console.log('Attempting to insert data into Supabase...');
+                const { error } = await supabase
+                    .from('subscribers')
+                    .insert([{ name, email }]);
+
+                if (error) {
+                    console.error('Error inserting data:', error);
+                    messageDiv.textContent = 'Failed to subscribe. Please try again.';
+                    messageDiv.className = 'message error';
+                } else {
+                    console.log('Successfully subscribed!');
+                    messageDiv.textContent = 'Successfully subscribed!';
+                    messageDiv.className = 'message success';
+
+                    // Clear the form
+                    nameInput.value = '';
+                    emailInput.value = '';
+                }
+            } catch (err) {
+                console.error('Error:', err);
+                messageDiv.textContent = 'An unexpected error occurred.';
+                messageDiv.className = 'message error';
+            }
+        }
+    </script>
 </body>
 </html>
