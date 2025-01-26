@@ -1,16 +1,15 @@
-import { SUPABASE_URL, SUPABASE_KEY } from '../config/supabase.js';
+import { supabase } from '../config/supabase.js';
 
-// Initialize Supabase
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-// Export the subscribe function
-export async function subscribe() {
+async function subscribe() {
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
     const messageDiv = document.getElementById('message');
 
     const name = nameInput.value.trim();
     const email = emailInput.value.trim();
+
+    messageDiv.textContent = '';
+    messageDiv.className = 'message';
 
     if (!name || !email) {
         messageDiv.textContent = 'Please fill out all fields.';
@@ -19,19 +18,28 @@ export async function subscribe() {
     }
 
     try {
+        console.log('Attempting to insert data into Supabase...');
         const { error } = await supabase
             .from('subscribers')
             .insert([{ name, email }]);
-        
-        if (error) throw error;
-        
-        messageDiv.textContent = 'Successfully subscribed!';
-        messageDiv.className = 'message success';
-        nameInput.value = '';
-        emailInput.value = '';
+
+        if (error) {
+            console.error('Error inserting data:', error);
+            messageDiv.textContent = 'Failed to subscribe. Please try again.';
+            messageDiv.className = 'message error';
+        } else {
+            console.log('Successfully subscribed!');
+            messageDiv.textContent = 'Successfully subscribed!';
+            messageDiv.className = 'message success';
+
+            nameInput.value = '';
+            emailInput.value = '';
+        }
     } catch (err) {
-        console.error('Subscription error:', err);
-        messageDiv.textContent = 'An error occurred. Please try again.';
+        console.error('Error:', err);
+        messageDiv.textContent = 'An unexpected error occurred.';
         messageDiv.className = 'message error';
     }
 }
+
+export { subscribe };
