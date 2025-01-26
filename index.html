@@ -108,55 +108,9 @@
         <div id="message" class="message"></div>
     </div>
 
-    <script>
-        // Supabase setup
-        const SUPABASE_URL = 'https://kketfaaihwjflpdngtvo.supabase.co';
-        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtrZXRmYWFpaHdqZmxwZG5ndHZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzczMTg1MTAsImV4cCI6MjA1Mjg5NDUxMH0.PYKJKO39GCAXm-3zDFnQbSy1-oc4iuE4neLnfItIC90';
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-        async function subscribe() {
-            const nameInput = document.getElementById('name');
-            const emailInput = document.getElementById('email');
-            const messageDiv = document.getElementById('message');
-
-            const name = nameInput.value.trim();
-            const email = emailInput.value.trim();
-
-            // Clear message div
-            messageDiv.textContent = '';
-            messageDiv.className = 'message';
-
-            if (!name || !email) {
-                messageDiv.textContent = 'Please fill out all fields.';
-                messageDiv.className = 'message error';
-                return;
-            }
-
-            try {
-                console.log('Attempting to insert data into Supabase...');
-                const { error } = await supabase
-                    .from('subscribers')
-                    .insert([{ name, email }]);
-
-                if (error) {
-                    console.error('Error inserting data:', error);
-                    messageDiv.textContent = 'Failed to subscribe. Please try again.';
-                    messageDiv.className = 'message error';
-                } else {
-                    console.log('Successfully subscribed!');
-                    messageDiv.textContent = 'Successfully subscribed!';
-                    messageDiv.className = 'message success';
-
-                    // Clear the form
-                    nameInput.value = '';
-                    emailInput.value = '';
-                }
-            } catch (err) {
-                console.error('Error:', err);
-                messageDiv.textContent = 'An unexpected error occurred.';
-                messageDiv.className = 'message error';
-            }
-        }
+    <script type="module">
+        import { subscribe } from './components/SubscriptionForm.js';
+        window.subscribe = subscribe;
     </script>
 </body>
 </html>
