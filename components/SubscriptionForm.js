@@ -1,13 +1,10 @@
-// Minimalist Subscription Form Logic
+import { SUPABASE_URL, SUPABASE_KEY } from '../config/supabase.js';
 
-// Import Supabase configuration
-import { SUPABASE_URL, SUPABASE_KEY } from '/config/supabase.js';
+// Initialize Supabase
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// Initialize Supabase client
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-// Subscription function
-async function subscribe() {
+// Export the subscribe function
+export async function subscribe() {
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
     const messageDiv = document.getElementById('message');
@@ -22,17 +19,14 @@ async function subscribe() {
     }
 
     try {
-        // Insert data into Supabase
         const { error } = await supabase
             .from('subscribers')
             .insert([{ name, email }]);
-
+        
         if (error) throw error;
-
+        
         messageDiv.textContent = 'Successfully subscribed!';
         messageDiv.className = 'message success';
-
-        // Clear the form
         nameInput.value = '';
         emailInput.value = '';
     } catch (err) {
