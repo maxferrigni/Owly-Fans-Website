@@ -18,20 +18,13 @@
             min-height: 100vh;
             background-color: #f4f4f9;
         }
-        /* Video Container */
-        .video-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            max-width: 800px;
-            gap: 20px;
-        }
         /* Video Styling */
         .video {
             width: 100%;
+            max-width: 800px;
             position: relative;
             padding-top: 56.25%; /* Maintain 16:9 aspect ratio */
+            margin-bottom: 20px;
         }
         .video iframe {
             position: absolute;
@@ -92,31 +85,16 @@
 <body>
     <h1 style="font-size: 3em; font-weight: bold;">Welcome to OWLY FANS!</h1>
 
-    <!-- Video Container -->
-    <div class="video-container">
-        <!-- Main Owl Box Video -->
-        <div class="video">
-            <iframe 
-                src="https://www.youtube.com/embed/7K45Uq5u6ug?autoplay=1&mute=1" 
-                title="Main Owl Box Live Stream" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-                    gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
-
-        <!-- Internal Owl Box Video -->
-        <div class="video">
-            <iframe 
-                src="https://www.youtube.com/embed/5mxoSz3SUaA?autoplay=1&mute=1" 
-                title="Internal Owl Box Live Stream" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-                    gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
+    <!-- Main Owl Box Video -->
+    <div class="video">
+        <iframe 
+            src="https://www.youtube.com/embed/7K45Uq5u6ug?autoplay=1&mute=1" 
+            title="Main Owl Box Live Stream" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+        </iframe>
     </div>
 
     <!-- Subscription Form -->
