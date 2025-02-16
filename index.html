@@ -18,15 +18,22 @@
             min-height: 100vh;
             background-color: #f4f4f9;
         }
-        /* Main Video Styles */
-        .main-video {
+        /* Video Container */
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             width: 100%;
             max-width: 800px;
+            gap: 20px;
+        }
+        /* Video Styling */
+        .video {
+            width: 100%;
             position: relative;
             padding-top: 56.25%; /* Maintain 16:9 aspect ratio */
-            margin-bottom: 20px;
         }
-        .main-video iframe {
+        .video iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -84,17 +91,34 @@
 </head>
 <body>
     <h1 style="font-size: 3em; font-weight: bold;">Welcome to OWLY FANS!</h1>
-    <!-- Main Video -->
-    <div class="main-video">
-        <iframe 
-            src="https://www.youtube.com/embed/7K45Uq5u6ug?autoplay=1&mute=1" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-                gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-        </iframe>
+
+    <!-- Video Container -->
+    <div class="video-container">
+        <!-- Main Owl Box Video -->
+        <div class="video">
+            <iframe 
+                src="https://www.youtube.com/embed/7K45Uq5u6ug?autoplay=1&mute=1" 
+                title="Main Owl Box Live Stream" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                    gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Internal Owl Box Video -->
+        <div class="video">
+            <iframe 
+                src="https://www.youtube.com/embed/5mxoSz3SUaA?autoplay=1&mute=1" 
+                title="Internal Owl Box Live Stream" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                    gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
     </div>
+
     <!-- Subscription Form -->
     <div id="subscription-form" class="form-container">
         <h1>Subscribe</h1>
@@ -103,6 +127,7 @@
         <button onclick="subscribe()">Subscribe</button>
         <div id="message" class="message"></div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script type="module">
         import { supabase } from './config/supabase.js';
