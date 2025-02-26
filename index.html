@@ -43,6 +43,11 @@
             border: 1px solid #ccc;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Center the form at the bottom */
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .form-container h1 {
             text-align: center;
@@ -85,19 +90,16 @@
 <body>
     <h1 style="font-size: 3em; font-weight: bold;">Welcome to OWLY FANS!</h1>
 
-    <!-- Main Owl Box Video -->
     <div class="video">
         <iframe 
-            src="https://www.youtube.com/embed/S-HEWsnza2M?autoplay=1&mute=1" 
+            src="https://www.youtube.com/watch?v=h2bbKlw5n7s" 
             title="Main Owl Box Live Stream" 
             frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-                gyroscope; picture-in-picture; web-share" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
             allowfullscreen>
         </iframe>
     </div>
 
-    <!-- Subscription Form -->
     <div id="subscription-form" class="form-container">
         <h1>Subscribe</h1>
         <input type="text" id="name" placeholder="Enter your name" required>
