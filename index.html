@@ -18,6 +18,14 @@
             min-height: 100vh;
             background-color: #f4f4f9;
         }
+        .content-container {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
         /* Video Styling */
         .video {
             width: 100%;
@@ -43,32 +51,36 @@
             border: 1px solid #ccc;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            /* Center the form at the bottom */
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            text-align: center;
         }
         .form-container h1 {
-            text-align: center;
             margin-bottom: 20px;
             font-size: 1.5rem;
+            color: #333;
         }
         .form-container input, .form-container button {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 15px;
             font-size: 1rem;
             border-radius: 4px;
+            box-sizing: border-box;
         }
         .form-container input {
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .form-container input:focus {
+            border-color: #007bff;
         }
         .form-container button {
             background-color: #007bff;
             color: white;
             border: none;
             cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
         }
         .form-container button:hover {
             background-color: #0056b3;
@@ -88,27 +100,26 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-    <h1 style="font-size: 3em; font-weight: bold;">Welcome to OWLY FANS!</h1>
-
-    <div class="video">
-        <iframe 
-            src="https://www.youtube.com/embed/kIDzaIIFV-M" 
-            title="Main Owl Box Live Stream" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-        </iframe>
+    <div class="content-container">
+        <h1 style="font-size: 3em; font-weight: bold;">Welcome to OWLY FANS!</h1>
+        <div class="video">
+            <iframe 
+                src="https://www.youtube.com/embed/TNllu5JcjqU" 
+                title="Main Owl Box Live Stream" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div id="subscription-form" class="form-container">
+            <h1>Subscribe</h1>
+            <input type="text" id="name" placeholder="Enter your name" required>
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <button onclick="subscribe()">Subscribe</button>
+            <div id="message" class="message"></div>
+        </div>
     </div>
-
-    <div id="subscription-form" class="form-container">
-        <h1>Subscribe</h1>
-        <input type="text" id="name" placeholder="Enter your name" required>
-        <input type="email" id="email" placeholder="Enter your email" required>
-        <button onclick="subscribe()">Subscribe</button>
-        <div id="message" class="message"></div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <script type="module">
         import { supabase } from './config/supabase.js';
         import { subscribe } from './components/SubscriptionForm.js';
